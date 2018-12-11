@@ -1,0 +1,30 @@
+{% extends 'web/index.html' %}
+
+{% block title %}
+管理员
+{% endblock %}
+
+{% block head %}
+<a href="{% url 'backweb:logout' %}">退出登陆</a>
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="text">
+    <input type="submit" value="搜索">
+</form>
+<a href="{% url 'backweb:manage' '' %}">添加文章</a>
+{% endblock %}
+
+{% block content %}
+
+{{block.super}}
+{% endblock %}
+
+{% block manage %}
+    <a href="{% url 'backweb:manage' art.id %}">修改</a>
+    <a href="{% url 'backweb:del_art' art.title %}">删除</a>
+<p>
+    <a href="{% url 'backweb:article' art.title %}">
+        管理员后台查看
+    </a>
+</p>
+{% endblock %}
